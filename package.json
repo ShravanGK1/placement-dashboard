@@ -1,13 +1,21 @@
 {
-  "name": "my-project",
-  "version": "0.1.0",
+  "name": "placement-cell-monorepo",
+  "version": "1.0.0",
   "private": true,
+  "description": "Placement Cell Dashboard & Distributed Systems Platform (Frontend + Backend)",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint .",
-    "seed:users": "node --env-file=.env scripts/seed-users.mjs"
+    "dev": "npm run dev --prefix frontend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "npm run dev --prefix backend",
+    "build": "npm run build --prefix frontend",
+    "start": "npm run start --prefix frontend",
+    "start:backend": "npm run start --prefix backend",
+    "seed:users": "npm run seed:users --prefix backend",
+    "lint": "npm run lint --prefix frontend"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -45,8 +53,12 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "1.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "date-fns": "4.1.0",
+    "dotenv": "^16.4.7",
     "embla-carousel-react": "8.6.0",
+    "express": "^4.21.2",
     "input-otp": "1.4.2",
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.564.0",

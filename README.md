@@ -44,15 +44,40 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-## Project Structure
+## Project Structure (Frontend & Backend Monorepo)
 
-- `app/` - Next.js App Router pages and API routes
-- `components/` - Reusable UI components (including shadcn/ui)
-- `hooks/` - Custom React hooks
-- `lib/` - Utility functions and database connection logic
-- `lib/ds/` - Distributed Systems core modules
-- `scripts/` - Database seeding and maintenance scripts
-- `public/` - Static assets
+```
+placement-cell-dashboard-main/
+├── frontend/                     # Next.js 16 Client Portal & UI Engine
+│   ├── app/                      # Student, Recruiter, Admin, DS Demo & Interview pages
+│   ├── components/               # shadcn/ui and interactive DS Visualizers
+│   ├── hooks/                    # Custom React state and event hooks
+│   ├── lib/                      # Client utilities, models & edge authentication
+│   ├── public/                   # Static assets & illustrations
+│   └── styles/                   # Global CSS & Tailwind styling
+│
+├── backend/                      # Node.js / Express API & Distributed Systems Service
+│   ├── src/
+│   │   ├── config/               # Database connection (MongoDB)
+│   │   ├── controllers/          # Business logic handlers
+│   │   ├── routes/               # REST, Auth, Student, Recruiter & DS routes
+│   │   ├── middleware/           # Auth guard, X-Request-Id tracing, Rate Limiter
+│   │   ├── models/               # Schemas for Users, Students & Interviews
+│   │   ├── lib/ds/               # Distributed Algorithms (RPC, Broker, WebRTC, Fault Tolerance)
+│   │   └── server.js             # Express server entry point (Port 5000)
+│   └── scripts/                  # DB Seeding and maintenance scripts
+│
+├── package.json                  # Root Monorepo orchestration scripts
+└── README.md                     # Comprehensive project documentation
+```
+
+### Monorepo NPM Scripts
+
+- `npm run dev` or `npm run dev:frontend` - Starts Next.js frontend dev server (port 3000)
+- `npm run dev:backend` - Starts standalone Express backend (port 5000)
+- `npm run seed:users` - Seeds default demo accounts in MongoDB
+- `npm run build` - Builds production frontend bundle
+
 
 ## Distributed Systems & Advanced Communication
 
